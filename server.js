@@ -1,5 +1,6 @@
 var express = require("express"),
-    exphbs  = require("express3-handlebars");
+    exphbs  = require("express3-handlebars"),
+coffeeMiddleware = require('coffee-middleware');
 
 // Create express app
 var app = express();
@@ -9,6 +10,10 @@ app.engine("handlebars", exphbs({
   defaultLayout: "main"
 }));
 app.set("view engine", "handlebars");
+app.use(coffeeMiddleware({
+    src: __dirname,
+    compress: true
+}));
 
 // Static folder
 app.use(express.static(__dirname + "/"));
