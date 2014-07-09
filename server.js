@@ -15,7 +15,13 @@ app.use(express.static(__dirname + "/"));
 
 // Homepage
 app.get("/", function(req, res) {
-  res.render("home");
+    res.render("home");
+});
+
+app.get("/multi", function (req, res) {
+    res.render("home", {
+        layout: "multi"
+    });
 });
 
 // Listen on a port number
